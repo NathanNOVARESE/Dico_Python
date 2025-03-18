@@ -1,11 +1,15 @@
 def print_menu():
-    print("\nGestion d'un dictionnaire")
+    print("\n" + "="*40)
+    print(" " * 10 + "Gestion d'un dictionnaire")
+    print("="*40)
     print("Le dictionnaire comporte pour le moment 25 mots.")
-    print("Ajout d'un mot __________________________________1")
-    print("Suppression d'un mot ____________________________2")
-    print("Recherche d'un mot ______________________________3")
-    print("Affichage de tout le dictionnaire _______________4")
-    print("Fin du programme ________________________________0")
+    print("-" * 40)
+    print("1. Ajout d'un mot")
+    print("2. Suppression d'un mot")
+    print("3. Recherche d'un mot")
+    print("4. Affichage de tout le dictionnaire")
+    print("0. Fin du programme")
+    print("="*40)
     return input("\nVotre choix : ")
 
 def add_word(dictionnaire):
