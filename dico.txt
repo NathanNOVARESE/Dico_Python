@@ -1,4 +1,7 @@
 alpha:alpha
 batard:batard
 bonbon:bonbon
+eau:eau
+mot:mot
+pot:pot
 zeta:zeta

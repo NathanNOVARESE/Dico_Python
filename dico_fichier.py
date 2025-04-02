@@ -1,4 +1,5 @@
 import os
+import re
 
 def load_dictionary(filename):
     dictionary = {}
@@ -30,6 +31,24 @@ def remove_word(filename):
     else:
         print("Erreur : le mot n'existe pas dans le dictionnaire.")
 
+def modifier(filename):
+    word = input("Entrez le mot à modifier : ").strip()
+    dictionary = load_dictionary(filename)
+    
+    if word in dictionary:
+        new_word = input("Entrez le nouveau mot (ou appuyez sur Entrée pour conserver le mot actuel) : ").strip()
+        new_definition = input("Entrez la nouvelle définition (ou appuyez sur Entrée pour conserver la définition actuelle) : ").strip()
+        
+        if new_word:
+            dictionary[new_word] = dictionary.pop(word)
+        if new_definition:
+            dictionary[new_word or word] = new_definition
+        
+        save_dictionary(dictionary, filename)
+        print(f"Le mot '{word}' a été modifié avec succès.")
+    else:
+        print("Erreur : le mot n'existe pas dans le dictionnaire.")
+
 def search_word(filename):
     word = input("Entrez le mot à rechercher : ").strip()
     dictionary = load_dictionary(filename)
@@ -58,8 +77,9 @@ def main():
         print("\nGestion d'un dictionnaire")
         print("Ajout d'un mot __________________________________1")
         print("Suppression d'un mot ____________________________2")
-        print("Recherche d'un mot ______________________________3")
-        print("Affichage de tout le dictionnaire _______________4")
+        print("Modification d'un mot ___________________________3")
+        print("Recherche d'un mot ______________________________4")
+        print("Affichage de tout le dictionnaire _______________5")
         print("Fin du programme ________________________________0")
         choice = input("\nVotre choix : ").strip()
 
@@ -68,8 +88,10 @@ def main():
         elif choice == '2':
             remove_word(filename)
         elif choice == '3':
-            search_word(filename)
+            modifier(filename)
         elif choice == '4':
+            search_word(filename)
+        elif choice == '5':
             display_dictionary(filename)
         elif choice == '0':
             print("Fin du programme.")
