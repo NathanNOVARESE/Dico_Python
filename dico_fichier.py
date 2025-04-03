@@ -31,7 +31,7 @@ def remove_word(filename):
     else:
         print("Erreur : le mot n'existe pas dans le dictionnaire.")
 
-def modifier(filename):
+def modify_word(filename):
     word = input("Entrez le mot à modifier : ").strip()
     dictionary = load_dictionary(filename)
     
@@ -88,7 +88,7 @@ def main():
         elif choice == '2':
             remove_word(filename)
         elif choice == '3':
-            modifier(filename)
+            modify_word(filename)
         elif choice == '4':
             search_word(filename)
         elif choice == '5':

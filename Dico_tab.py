@@ -8,6 +8,7 @@ def print_menu():
     print("2. Suppression d'un mot")
     print("3. Recherche d'un mot")
     print("4. Affichage de tout le dictionnaire")
+    print("5. Modification d'un mot")
     print("0. Fin du programme")
     print("="*40)
     return input("\nVotre choix : ")
@@ -42,6 +43,22 @@ def display_dictionnary(dictionnaire):
     for mot, definition in sorted(dictionnaire.items()):
         print(f"{mot} : {definition}")
 
+def modify_word(dictionnaire):
+    mot = input("Entrez le mot à modifier : ").strip()
+    if mot in dictionnaire:
+        nouveau_mot = input("Entrez le nouveau mot (ou appuyez sur Entrée pour conserver le mot actuel) : ").strip()
+        nouvelle_definition = input("Entrez la nouvelle définition (ou appuyez sur Entrée pour conserver la définition actuelle) : ").strip()
+        
+        if nouveau_mot:
+            dictionnaire[nouveau_mot] = dictionnaire.pop(mot)
+        if nouvelle_definition:
+            dictionnaire[nouveau_mot or mot] = nouvelle_definition
+        
+        print(f"Le mot '{mot}' a été modifié avec succès.")
+    else:
+        print("Erreur : le mot n'existe pas dans le dictionnaire.")
+    return dictionnaire
+
 def main():
     dictionnaire = {}
     while True:
@@ -54,6 +71,8 @@ def main():
             search_word(dictionnaire)
         elif choix == '4':
             display_dictionnary(dictionnaire)
+        elif choix == '5':
+            dictionnaire = modify_word(dictionnaire)
         elif choix == '0':
             print("Fin du programme.")
             break

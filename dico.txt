@@ -1,6 +1,6 @@
 alpha:alpha
-bonbon:bonbon
 eau:eau
 mot:mot
 pot:pot
+tonton:frère de ton père
 zeta:zeta
