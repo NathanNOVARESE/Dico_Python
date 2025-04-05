@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def print_menu(dictionnaire):
     
     print("\n" + "="*40)
@@ -10,6 +12,7 @@ def print_menu(dictionnaire):
     print("3. Recherche d'un mot")
     print("4. Affichage de tout le dictionnaire")
     print("5. Modification d'un mot")
+    print("6. Graphique")
     print("0. Fin du programme")
     print("="*40)
     return input("\nVotre choix : ")
@@ -44,6 +47,20 @@ def display_dictionnary(dictionnaire):
     for mot, definition in sorted(dictionnaire.items()):
         print(f"{mot} : {definition}")
 
+def graphic(dictionnaire):
+    mots = list(dictionnaire.keys())
+    longueurs_definitions = [len(definition.split()) for definition in dictionnaire.values()]
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(mots, longueurs_definitions, color='skyblue')
+    plt.xlabel('Mots', fontsize=12)
+    plt.ylabel('Nombre de mots dans la définition', fontsize=12)
+    plt.title('Longueur des définitions des mots', fontsize=14)
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.show()
+
+
 def modify_word(dictionnaire):
     mot = input("Entrez le mot à modifier : ").strip()
     if mot in dictionnaire:
@@ -74,6 +91,8 @@ def main():
             display_dictionnary(dictionnaire)
         elif choix == '5':
             dictionnaire = modify_word(dictionnaire)
+        elif choix == '6':
+            graphic(dictionnaire)
         elif choix == '0':
             print("Fin du programme.")
             break

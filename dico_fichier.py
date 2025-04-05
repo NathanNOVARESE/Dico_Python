@@ -50,6 +50,23 @@ def modify_word(filename):
     else:
         print("Erreur : le mot n'existe pas dans le dictionnaire.")
 
+def graphic(filename):
+    dictionary = load_dictionary(filename)
+    if dictionary:
+        words = list(dictionary.keys())
+        lengths = [len(definition.split()) for definition in dictionary.values()]
+
+        plt.figure(figsize=(10, 50))
+        plt.bar(words, lengths, color='skyblue')
+        plt.xlabel('Mots', fontsize=12)
+        plt.ylabel('Nombre de mots dans la définition', fontsize=12)
+        plt.title('Dictionnaire', fontsize=14)
+        plt.xticks(rotation=45, ha='right', fontsize=10)
+        plt.yticks(range(0, max(lengths) + 1))
+        plt.tight_layout()
+        plt.show()
+    else:
+        print("Le dictionnaire est vide.")
 
 def search_word(filename):
     word = input("Entrez le mot à rechercher : ").strip()
