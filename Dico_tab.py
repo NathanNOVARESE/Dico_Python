@@ -1,8 +1,9 @@
-def print_menu():
+def print_menu(dictionnaire):
+    
     print("\n" + "="*40)
-    print(" " * 10 + "Gestion d'un dictionnaire")
+    print(" " * 10 + "Gestion d'un dictionnaire Tab")
     print("="*40)
-    print("Le dictionnaire comporte pour le moment 25 mots.")
+    print(f"Le dictionnaire comporte pour le moment {len(dictionnaire)} mot(s).")
     print("-" * 40)
     print("1. Ajout d'un mot")
     print("2. Suppression d'un mot")
@@ -62,7 +63,7 @@ def modify_word(dictionnaire):
 def main():
     dictionnaire = {}
     while True:
-        choix = print_menu()
+        choix = print_menu(dictionnaire)
         if choix == '1':
             dictionnaire = add_word(dictionnaire)
         elif choix == '2':

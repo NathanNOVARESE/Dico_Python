@@ -1,5 +1,6 @@
 import os
 import re
+import b as plt
 
 def load_dictionary(filename):
     dictionary = {}
@@ -49,6 +50,7 @@ def modify_word(filename):
     else:
         print("Erreur : le mot n'existe pas dans le dictionnaire.")
 
+
 def search_word(filename):
     word = input("Entrez le mot à rechercher : ").strip()
     dictionary = load_dictionary(filename)
@@ -74,13 +76,19 @@ def main():
     filename = 'dico.txt'
 
     while True:
-        print("\nGestion d'un dictionnaire")
-        print("Ajout d'un mot __________________________________1")
-        print("Suppression d'un mot ____________________________2")
-        print("Modification d'un mot ___________________________3")
-        print("Recherche d'un mot ______________________________4")
-        print("Affichage de tout le dictionnaire _______________5")
-        print("Fin du programme ________________________________0")
+        print("\n" + "="*80)
+        print(" " * 10 + "Gestion d'un dictionnaire fichier")
+        print("="*40)
+        print(f"Le dictionnaire comporte pour le moment {len(load_dictionary(filename))} mot(s).")
+        print("-" * 40)
+        print("1. Ajout d'un mot")
+        print("2. Suppression d'un mot")
+        print("3. Recherche d'un mot")
+        print("4. Affichage de tout le dictionnaire")
+        print("5. Modification d'un mot")
+        print("6. Graphique")
+        print("0. Fin du programme")
+        print("="*40)
         choice = input("\nVotre choix : ").strip()
 
         if choice == '1':
@@ -88,11 +96,13 @@ def main():
         elif choice == '2':
             remove_word(filename)
         elif choice == '3':
-            modify_word(filename)
-        elif choice == '4':
             search_word(filename)
-        elif choice == '5':
+        elif choice == '4':
             display_dictionary(filename)
+        elif choice == '5':
+            modify_word(filename)
+        elif choice == '6':
+            graphic(filename)
         elif choice == '0':
             print("Fin du programme.")
             break
