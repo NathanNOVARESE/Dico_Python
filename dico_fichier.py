@@ -1,6 +1,6 @@
 import os
 import re
-import b as plt
+import matplotlib.pyplot as plt
 
 def load_dictionary(filename):
     dictionary = {}
